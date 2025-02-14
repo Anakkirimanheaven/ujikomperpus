@@ -20,7 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'alamat',
-        'no_hp',
         'email',
         'password',
     ];
@@ -52,13 +51,13 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'id_user');
     }
 
-    public function favorites()
+    public function favorits()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany(Favorit::class);
     }
 
     public function favoriteBooks()
     {
-        return $this->belongsToMany(Buku::class, 'favorites');
+        return $this->belongsToMany(Buku::class, 'favorits');
     }
 }

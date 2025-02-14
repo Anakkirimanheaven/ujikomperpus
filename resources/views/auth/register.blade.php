@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="no_hp"
                                         class="col-md-12 col-form-label text-md-end">{{ __('Call number') }}</label>
 
@@ -91,7 +91,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="row mb-3">
                                     <label for="email"

@@ -1,65 +1,38 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Favorit;
+use App\Models\Buku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoritController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $favorit = Auth::user()->favoritBooks()->get();
+        return view('favorit.index', compact('favorit'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(Buku $buku)
     {
-        //
+        $favorit = Favorit::firstOrCreate([
+            'id_user' => Auth::id(),
+            'id_buku' => $buku->id,
+        ]);
+
+        return back()->with('success', 'Buku ditambahkan ke favorit!');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function destroy(Buku $buku)
     {
-        //
-    }
+        $favorit = Favorit::where('id_user', Auth::id())->where('id_buku', $buku->id)->first();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Favorit $favorit)
-    {
-        //
-    }
+        if ($favorit) {
+            $favorit->delete();
+            return back()->with('success', 'Buku dihapus dari favorit!');
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Favorit $favorit)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Favorit $favorit)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Favorit $favorit)
-    {
-        //
+        return back()->with('error', 'Buku tidak ditemukan dalam daftar favorit.');
     }
 }

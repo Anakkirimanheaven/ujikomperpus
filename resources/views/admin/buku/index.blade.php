@@ -15,11 +15,14 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col">Title Book</th>
-                        <th scope="col">Amount of Books</th>
-                        <th scope="col">Category Name</th>
-                        <th scope="col">Publiser Name</th>
-                        <th scope="col">Writter Name</th>
+                        <th scope="col">Judul Buku</th>
+                        <th scope="col">Tahun Terbit</th>
+                        <th scope="col">Kode Buku</th>
+                        <th scope="col">Stok Buku</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Nama Kategori</th>
+                        <th scope="col">Nama Penerbit</th>
+                        <th scope="col">Nama Penulis</th>
                         <th scope="col" class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -30,47 +33,40 @@
 
                             <th scope="row">{{ ($buku->currentPage() - 1) * $buku->perPage() + $loop->index + 1 }}</th>
                             <td>{{ $data->judul }}</td>
-                            <td class="text-center">{{ $data->jumlah_buku }}</td>
+                            <td class="text-center">{{ $data->tahun_terbit }}</td>
+                            <td class="text-center">{{ $data->kode_buku }}</td>
+                            <td class="text-center">{{ $data->stok }}</td>
+                            <td class="text-center">{{ $data->harga }}</td>
                             <td>
                                 @if ($data->kategori)
                                     {{ $data->kategori->nama_kategori }}
                                 @else
-                                    category not found
+                                    Kategori Tidak Ditemukan
                                 @endif
                             </td>
                             <td>
                                 @if ($data->penerbit)
                                     {{ $data->penerbit->nama_penerbit }}
                                 @else
-                                    publisher not found
+                                    Penerbit Tidak Ditemukan
                                 @endif
                             </td>
                             <td>
                                 @if ($data->penulis)
                                     {{ $data->penulis->nama_penulis }}
                                 @else
-                                    writter not found
+                                    Penulis Tidak Ditemukan
                                 @endif
                             </td>
                             <td class="text-center">
-                                {{-- <a href="{{ route('buku.edit', $data->id) }}"><button type="button"
-                                        class="btn btn-sm btn-primary m-1" item-bs-toggle="tooltip" data-bs-placement="left"
-                                        title="Editing Book"><i class="ti ti-edit"></i></button></a>
-                                <a href="{{ route('buku.show', $data->id) }}"><button type="button"
-                                        class="btn btn-sm btn-secondary m-1" item-bs-toggle="tooltip" data-bs-placement="left"
-                                        title="Book Detail"><i class="ti ti-eye"></i></button></a>
-                                </a>
-                                <a href="#"
-                                    onclick="event.preventDefault();
-    document.getElementById('destroy-form-{{ $data->id }}').submit();">
-                                    <button type="button" class="btn btn-sm btn-danger m-1" item-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="Delete Book"><i class="ti ti-trash"></i></button>
-                                </a>
-                                <form id="destroy-form-{{ $data->id }}"
-                                    action="{{ route('buku.destroy', $data->id) }}" method="POST" class="d-none">
-                                    @method('DELETE')
-                                    @csrf
-                                </form> --}}
+                                @if ($data->gambar)
+                                <img src="{{ asset('images/buku/' . $buku->image) }}" alt="Foto Buku"
+                                class="img-thumbnail mb-3"
+                                style="width: 180px; height: 210px; object-fit: cover; margin-top:20px;">
+                                @else
+                                    <img src="{{ asset('images/default.jpg') }}" alt="Gambar Default" width="80px" height="auto">
+                                @endif
+                            </td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="ti ti-menu-2"></i>
@@ -81,11 +77,11 @@
                                                 <i class="ti ti-edit"></i> Edit
                                             </a>
                                         </li>
-                                        {{-- <li>
-                                            <a class="dropdown-item" href=" route('buku.show', $data->id) }}">
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('buku.show', $data->id) }}">
                                                 <i class="ti ti-eye"></i> View
                                             </a>
-                                        </li> --}}
+                                        </li>
                                         <li>
                                             <form action="{{ route('buku.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 @csrf

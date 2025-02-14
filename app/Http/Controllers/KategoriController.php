@@ -16,13 +16,13 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::all();
         confirmDelete('Delete','Are you sure?');
-        return view('kategori.index', compact('kategori'));
+        return view('admin.kategori.index', compact('kategori'));
     }
 
 
     public function create()
     {
-        return view('kategori.create');
+        return view('admin.kategori.create');
     }
 
 
@@ -52,7 +52,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::findOrFail($id);
-        return view('kategori.edit', compact('kategori'));
+        return view('admin.kategori.edit', compact('kategori'));
     }
 
 

@@ -16,12 +16,12 @@ class PenerbitController extends Controller
     public function index()
     {
         $penerbit = penerbit::latest()->paginate(5);
-        return view('penerbit.index', compact('penerbit'));
+        return view('admin.penerbit.index', compact('penerbit'));
     }
 
     public function create()
     {
-        return view('penerbit.create');
+        return view('admin.penerbit.create');
     }
 
     public function store(Request $request)

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-    <h3 class="m-3 text-uppercase">ADD BOOK</h3>
+    <h3 class="m-3 text-uppercase">Tambah Buku</h3>
     <hr>
         <div class="row">
             <div class="col-12 col-xl-12">
@@ -24,9 +24,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="desk" class="form-label">Descripstion</label>
-                            <textarea name="desk" class="form-control @error('desk') is-invalid @enderror" id="desk" placeholder="Descriptions" required></textarea>
-                            @error('desk')
+                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Descriptions" required></textarea>
+                            @error('deskripsi')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -34,9 +34,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="tahun_penerbit" class="form-label">Date Publisher</label>
-                            <input type="date" name="tahun_penerbit" class="form-control @error('tahun_penerbit') is-invalid @enderror" id="tahun_penerbit" required>
-                            @error('tahun_penerbit')
+                            <label for="harga" class="form-label">Harga Buku</label>
+                            <input type="number" name="harga" class="form-control @error('harga') is-invalid @enderror" id="harga" placeholder="Harga Buku" required>
+                            @error('harga')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -44,9 +44,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="jumlah_buku" class="form-label">Amount Book</label>
-                            <input type="number" name="jumlah_buku" class="form-control @error('jumlah_buku') is-invalid @enderror" id="jumlah_buku" placeholder="Amount" required>
-                            @error('jumlah_buku')
+                            <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
+                            <input type="date" name="tahun_terbit" class="form-control @error('tahun_terbit') is-invalid @enderror" id="tahun_terbit" required>
+                            @error('tahun_terbit')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -54,14 +54,34 @@
                         </div>
 
                         {{-- <div class="mb-3">
-                            <label for="stok" class="form-label">Stok Buku</label>
-                            <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="Stok buku" required>
-                            @error('stok')
+                            <label for="jumlah_buku" class="form-label">Amount Book</label>
+                            <input type="number" name="jumlah_buku" class="form-control @error('jumlah_buku') is-invalid @enderror" id="jumlah_buku" placeholder="Amount" required>
+                            @error('jumlah_buku')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div> --}}
+
+                        <div class="mb-3">
+                            <label for="stok" class="form-label">Stok Buku</label>
+                            <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="Stok" required>
+                            @error('stok')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="kode_buku" class="form-label">kode buku </label>
+                            <input type="number" name="kode_buku" class="form-control @error('kode_buku') is-invalid @enderror" id="kode_buku" placeholder="kode_buku" required>
+                            @error('kode_buku')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
@@ -74,7 +94,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="id_kategori" class="form-label">Category Name</label>
+                            <label for="id_kategori" class="form-label">Nama Kategori</label>
                             <select name="id_kategori" id="id_kategori" class="form-control" required>
                                 <option disabled selected>Name</option>
                                 @forelse ($kategori as $item)
@@ -86,7 +106,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="id_penerbit" class="form-label">Publisher Name</label>
+                            <label for="id_penerbit" class="form-label">Nama Penerbit</label>
                             <select name="id_penerbit" id="id_penerbit" class="form-control" required>
                                 <option disabled selected>Name</option>
                                 @forelse ($penerbit as $item)
@@ -98,7 +118,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="id_penulis" class="form-label">Writter</label>
+                            <label for="id_penulis" class="form-label">Penulis</label>
                             <select name="id_penulis" id="id_penulis" class="form-control" required>
                                 <option disabled selected>Name</option>
                                 @forelse ($penulis as $item)

@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('deskripsi');
-            $table->date('thn_terbit');
+            $table->date('tahun_terbit');
             $table->string('kode_buku');
             $table->integer('stok');
-            $table->string('img');
+            $table->integer('harga');
+            $table->string('image');
             $table->bigInteger('id_penerbit')->unsigned();
             $table->foreign('id_penerbit')->references('id')->on('penerbits')->onDelete('cascade');
             $table->bigInteger('id_penulis')->unsigned();

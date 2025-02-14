@@ -46,7 +46,8 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'no_hp' => ['required', 'unique:users'],
+            'alamat' => ['required','string'],
+            // 'no_hp' => ['required', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -54,7 +55,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->no_hp = $request->no_hp;
+        // $user->no_hp = $request->no_hp;
         $user->alamat = $request->alamat;
         $user->password = Hash::make($request->password);
         $user->isAdmin = $request->isAdmin;
@@ -103,7 +104,7 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->no_hp = $request->no_hp;
+        // $user->no_hp = $request->no_hp;
         $user->alamat = $request->alamat;
         $user->isAdmin = $request->isAdmin;
 
@@ -120,9 +121,6 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(User $user)
     {
         if (Auth::user()->id != $user->id) {

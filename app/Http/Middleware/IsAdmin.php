@@ -15,11 +15,16 @@ class isAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next, ...$isAdmins)
     {
-        if (Auth::user()->isAdmin) {
-            return $next($request);
+        $isAdmins = array_map('trim', $isAdmins);
+
+        if (Auth::check()) {
+            if (in_array(Auth::user()->isAdmin, $isAdmins)) {
+                return $next($request);
+            }
         }
+
         return abort(403);
     }
 }

@@ -15,10 +15,10 @@
         data-sidebar-position="fixed" data-header-position="fixed">
 
         {{-- header --}}
-        @include('layouts.admin.navbar')
+        @include('include.backend.navbar')
 
         {{-- start sidebar --}}
-        @include('layouts.admin.sidebar')
+        @include('include.backend.sidebar')
         <div class="body-wrapper">
 
              <div class="row">

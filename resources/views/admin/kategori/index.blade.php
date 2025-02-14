@@ -49,7 +49,7 @@
                         <tbody>
                             @foreach ($kategori as $data)
                                 <tr>
-                                    <th scope="row">{{ ($kategori->currentPage() - 1) * $kategori->perPage() + $loop->index + 1 }}</th>
+                                    {{-- <th scope="row">{{ ($kategori->currentPage() - 1) * $kategori->perPage() + $loop->index + 1 }}</th> --}}
                                     <td>{{ $data->nama_kategori }}</td>
                                     <td class="text-center">
                                         {{-- <a href="{{ route('kategori.edit', $data->id) }}"><button type="button"
@@ -100,9 +100,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center mt-4">
-                        {{ $kategori->links('pagination::bootstrap-5')  }}
-                    </div>
                 </div>
             </div>
         </div>

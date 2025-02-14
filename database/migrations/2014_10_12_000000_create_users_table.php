@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('alamat');
             $table->string('email')->unique();
-            $table->string('no_hp');
             $table->string('fotoprofile')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('isAdmin', ['peminjam', 'petugas', 'admin'])->default('peminjam');

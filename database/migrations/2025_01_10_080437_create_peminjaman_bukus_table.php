@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('id_buku')->unsigned();
             $table->foreign('id_buku')->references('id')->on('bukus')->onDelete('cascade');
             $table->date('tgl_pinjam');
+            $table->date('tgl_kembali');
             $table->date('jatuh_tempo');
             $table->text('pesan');
             $table->enum('status', ['ditahan', 'ditolak', 'diterima']);

@@ -9,21 +9,21 @@
                     <thead>
                         <tr>
                             <th class="text-center">No</th class="text-center">
-                            <th>Title Book</th>
-                            <th>Borrower Name</th>
-                            <th class="text-center">Amount</th>
-                            <th class="text-center">Borrow Date</th>
+                            <th>Judul Buku</th>
+                            <th>Nama Peminjam</th>
+                            <th class="text-center">Jumlah</th>
+                            <th class="text-center">Tanggal Pinjam</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($minjem as $item)
+                        @foreach ($peminjaman as $item)
                             <tr>
                                 <td class="text-center">{{ $loop->index + 1 }}</td>
                                 <td>{{ $item->buku->judul }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td class="text-center">{{ $item->jumlah }}</td>
-                                <td class="text-center">{{ $item->tanggal_minjem }}</td>
+                                <td class="text-center">{{ $item->tgl_pinjam }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('peminjamanadmin.detail', $item->id) }}"><button type="button"
                                             class="btn btn-secondary m-1" item-bs-toggle="tooltip" data-bs-placement="left"
